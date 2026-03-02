@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: foodvision-ai
+    env: docker
+    plan: free
+    healthCheckPath: /api/status
