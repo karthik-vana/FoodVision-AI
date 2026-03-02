@@ -44,8 +44,8 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Ensure upload folder exists
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    # No longer tracking upload folder for serverless support
+
 
     # ─── Initialize Utility Objects ─────────────────────────────────
     from utils import (
@@ -159,11 +159,11 @@ def create_app(config_class=Config):
                     from_cache=True,
                 )
 
-            # ── Save Uploaded File ──────────────────────────────────
-            filename = f"{uuid.uuid4().hex}_{secure_filename(file.filename)}"
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
-            logger.info("Image saved: %s", filepath)
+            # ── Generate Base64 Image URL for Frontend ────────────────
+            import base64
+            b64_img = base64.b64encode(image_bytes).decode('utf-8')
+            mime_type = file.content_type or 'image/jpeg'
+            data_url = f"data:{mime_type};base64,{b64_img}"
 
             # ── Load Model ──────────────────────────────────────────
             if model_loader is None:
@@ -172,13 +172,14 @@ def create_app(config_class=Config):
 
             model = model_loader.load_model(model_key)
 
-            # ── Preprocess Image ────────────────────────────────────
+            # ── Preprocess Image IN MEMORY ─────────────────────────
+            # Use the dedicated bytes preprocessor
             target_size_override = None
             if hasattr(model, 'input_shape') and len(model.input_shape) >= 3:
                 # Check for standard (None, H, W, 3) shape
                 target_size_override = (model.input_shape[1], model.input_shape[2])
                 
-            img_tensor = image_preprocessor.preprocess(filepath, target_size=target_size_override)
+            img_tensor = image_preprocessor.preprocess_from_bytes(image_bytes)
 
             # ── Run Prediction ──────────────────────────────────────
             prediction = predictor.predict(model, img_tensor)
@@ -205,9 +206,7 @@ def create_app(config_class=Config):
                 'model_used': app.config['MODEL_DISPLAY_NAMES'].get(
                     model_key, model_key
                 ),
-                'image_url': url_for(
-                    'static', filename=f'uploads/{filename}'
-                ),
+                'image_url': data_url,
             }
 
             # ── Cache Result ─────────────────────────────────────────

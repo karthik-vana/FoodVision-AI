@@ -1,25 +1,9 @@
 {
     "version": 2,
-    "builds": [
+    "rewrites": [
         {
-            "src": "app.py",
-            "use": "@vercel/python"
+            "source": "/(.*)",
+            "destination": "/api/index.py"
         }
-    ],
-    "routes": [
-        {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/app.py"
-        }
-    ],
-    "env": {
-        "FLASK_ENV": "production",
-        "REDIS_HOST": "your-redis-host.com",
-        "REDIS_PORT": "6379",
-        "REDIS_PASSWORD": "your-redis-password"
-    }
+    ]
 }
