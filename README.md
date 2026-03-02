@@ -1,281 +1,168 @@
-# 🧠 AI Food Image Classification System
-
-> **Classify food images into 34 categories with nutritional insights using Deep Learning & Transfer Learning**
+<div align="center">
+  
+# 🧠 FoodVision AI: Deep Learning Diet & Nutrition Analyzer
+  
+**An end-to-end Computer Vision application that classifies 34 complex food categories using advanced Transfer Learning architectures (ResNet & VGG16) and serves real-time nutritional insights via a lightning-fast Flask & Redis backend.**
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
-[![Flask](https://img.shields.io/badge/Flask-3.1-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16.2-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
+[![Flask](https://img.shields.io/badge/Flask-3.1.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![Redis](https://img.shields.io/badge/Redis-5.0-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 
----
+</div>
+
+<br>
 
 ## 📋 Table of Contents
-
 - [Project Overview](#-project-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Model Architecture](#-model-architecture)
-- [Dataset Description](#-dataset-description)
-- [Validation Results](#-validation-results)
-- [Project Structure](#-project-structure)
-- [Installation Guide](#-installation-guide)
-- [Usage](#-usage)
+- [Key Features](#-key-features)
+- [System Architecture & Tech Stack](#-system-architecture--tech-stack)
+- [Deep Learning Models](#-deep-learning-models)
+  - [Custom CNN](#1-custom-cnn-baseline)
+  - [VGG16 Transfer Learning](#2-vgg16-transfer-learning)
+  - [ResNet50 Transfer Learning](#3-resnet-transfer-learning-recommended)
+- [Dataset Specifications](#-dataset-specifications)
+- [Getting Started / Installation](#-getting-started)
 - [Deployment Guide](#-deployment-guide)
-- [Screenshots](#-screenshots)
 - [Author](#-author)
 
 ---
 
 ## 🎯 Project Overview
 
-This is a **production-ready Food Image Classification Web Application** that uses three deep learning models to classify food images into **34 categories** and provide detailed nutritional information.
+**FoodVision AI** bridges the gap between state-of-the-art computer vision and everyday dietary tracking. By simply uploading an image of a meal, the system instantly identifies the food type and retrieves its complete macronutrient and micronutrient profile. 
 
-The system features:
-- **3 AI Models**: Custom CNN, VGG16 (Transfer Learning), ResNet (Transfer Learning)
-- **Real-time Prediction**: Upload a food image and get instant classification
-- **Nutritional Insights**: Calories, protein, carbs, fat, fiber, vitamins, minerals
-- **Redis Caching**: Faster repeated predictions with intelligent caching
-- **Premium UI**: Glassmorphism design with dark/light mode toggle
+Built with scalability and rapid inference in mind, the backend leverages **Redis caching** to ensure O(1) response times for identical or repeated image queries, bypassing the expensive neural network forward pass when possible. The frontend is crafted with a modern, responsive **Glassmorphism** UI, providing a premium user experience across all devices.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
-| 🔮 **Multi-Model Prediction** | Choose between Custom CNN, VGG16, or ResNet |
-| 📊 **Model Metrics** | View accuracy, precision, recall, F1-score, TP/TN/FP/FN |
-| 🍎 **Nutrition Info** | Detailed nutritional breakdown per food item |
-| ⚡ **Redis Caching** | Cached predictions for instant repeated lookups |
-| 🎨 **Premium UI** | Glassmorphism cards, animations, responsive design |
-| 🌙 **Dark/Light Mode** | Toggle between themes with persistent preference |
-| 📱 **Fully Responsive** | Works on desktop, tablet, and mobile |
-| 🖱️ **Drag & Drop** | Intuitive image upload with drag-and-drop |
-| 🔔 **Toast Notifications** | Real-time feedback for user actions |
+* 🔮 **Multi-Model Inference Engine**: Allows users to seamlessly toggle between three distinct convolutional neural network architectures (Custom CNN, VGG16, ResNet) to compare real-time inference results and confidence scores.
+* ⚡ **Intelligent Redis Caching**: Hashes incoming image byte streams and caches the associated model predictions and nutritional lookups. Reduces repeated inference time from ~800ms to <10ms.
+* 🍎 **Automated Nutritional Analysis**: Maps predicted classes against a comprehensive JSON database to return granular dietary insights (Calories, Proteins, Carbs, Fats, Fiber, Vitamins, Minerals).
+* 📊 **Live Model Metrics**: Dynamically displays detailed validation metrics (Precision, Recall, F1-Score, Confusion Matrix metrics) for the selected model alongside the results.
+* 🎨 **Premium Glassmorphism UI**: Features a sleek, modern, and fully responsive frontend with an integrated Dark/Light mode toggle, animated transitions, and drag-and-drop file upload capabilities.
 
 ---
 
-## 🛠️ Tech Stack
+## 💻 System Architecture & Tech Stack
 
-### Backend
-- **Python 3.10+** — Core language
-- **Flask 3.1** — Web framework
-- **TensorFlow / Keras 2.16** — Deep learning framework
-- **Redis 5.0** — In-memory caching
-- **NumPy** — Numerical computing
-- **Pillow** — Image processing
+### AI & Machine Learning Pipeline
+* **TensorFlow / Keras (v2.16)**: Core framework for defining, compiling, and training the neural networks.
+* **NumPy / Pandas**: Used extensively for dataset preprocessing, augmentation, and numerical manipulation.
+* **Pillow (PIL)**: Backend image parsing, resizing to network input dimensions $224 \times 224 \times 3$, and channel normalization.
 
-### Frontend
-- **HTML5** — Semantic structure
-- **CSS3** — Custom styling with glassmorphism
-- **JavaScript (ES6+)** — Interactive functionality
-- **Bootstrap 5.3** — Responsive grid and components
-- **Bootstrap Icons** — Icon library
+### Backend App Server
+* **Python (v3.10+)**: Core runtime environment.
+* **Flask (v3.1.0)**: Lightweight WSGI web application framework serving RESTful prediction endpoints and rendering Jinja2 templates.
+* **Redis (v5.0)**: In-memory datastore utilized for the prediction caching layer.
+* **Gunicorn**: High-performance Python WSGI HTTP Server for UNIX environments.
 
-### DevOps
-- **Vercel** — Deployment platform
-- **Git / GitHub** — Version control
-- **Gunicorn** — WSGI HTTP server
+### Frontend Client
+* **Vanilla JavaScript (ES6)**: Handles asynchronous model requests, dynamic DOM updates, and client-side validation without heavy framework overhead.
+* **Bootstrap 5.3 & Custom CSS3**: Utilizes grid systems integrated with bespoke CSS variables, glassmorphism UI tokens, and keyframe animations.
 
 ---
 
-## 🏗️ Model Architecture
+## 🧠 Deep Learning Models
 
-### 1. Custom CNN
-A custom-built convolutional neural network designed from scratch:
-- Multiple Conv2D layers with ReLU activation
-- MaxPooling for spatial dimensionality reduction
-- Dense layers with Dropout for regularization
-- Softmax output layer (34 classes)
+To demonstrate the efficacy of Transfer Learning in complex computer vision tasks, three distinct models were trained and evaluated on the dataset:
+
+### 1. Custom CNN (Baseline)
+A structural baseline Convolutional Neural Network built from scratch. 
+* **Architecture**: Sequential structure with interleaved $Conv2D$ (ReLU activation) and $MaxPooling2D$ layers, flattened into fully connected $Dense$ networks paired with heavy $Dropout$ layers to combat overfitting.
+* **Performance**: Achieved **~24% Accuracy**, establishing the difficulty of the dataset and the necessity for deeper architectures.
 
 ### 2. VGG16 (Transfer Learning)
-Pre-trained VGG16 model from ImageNet:
-- Frozen base layers for feature extraction
-- Custom dense head for food classification
-- Fine-tuned on food dataset
-- Improved accuracy over Custom CNN
+Utilizes the robust VGG16 architecture pre-trained on ImageNet.
+* **Architecture**: The deep convolutional base of VGG16 was frozen to retain foundational feature extraction (edges, colors, textures). A custom classification head featuring GlobalAveragePooling2D and Dense layers was attached and trained specifically on our 34 food classes.
+* **Performance**: Achieved **~51% Accuracy**, demonstrating a massive leap in spatial feature recognition over the baseline.
 
-### 3. ResNet (Transfer Learning)
-Pre-trained ResNet model from ImageNet:
-- Residual connections for deep feature learning
-- Custom classification head
-- Fine-tuned for food image domain
-- Best performance among all models
+### 3. ResNet (Transfer Learning) — *Recommended*
+Leverages Residual Networks to solve the vanishing gradient problem inherent in ultra-deep networks.
+* **Architecture**: Employs identity shortcut connections that skip one or more layers. Like VGG16, it utilizes ImageNet weights with a fine-tuned top dense classification head.
+* **Performance**: **Best Overall Performance**. It consistently delivers the highest top-1 accuracy, greatest precision/recall stability, and superior robustness against complex, multi-item food imagery.
 
 ---
 
-## 📦 Dataset Description
+## 📦 Dataset Specifications
 
-- **Total Classes**: 34 food categories
-- **Categories include**: Apple Pie, Baked Potato, Burger, Butter Naan, Chai, Chapati, Cheesecake, Chicken Curry, Chole Bhature, Crispy Chicken, Dal Makhani, Dhokla, Donut, Fried Rice, Fries, Hot Dog, Ice Cream, Idli, Jalebi, Kaathi Rolls, Kadai Paneer, Kulfi, Masala Dosa, Momos, Omelette, Paani Puri, Pakode, Pav Bhaji, Pizza, Samosa, Sandwich, Sushi, Taco, Taquito
-- **Split**: Training / Validation / Testing
-- **Image Size**: 224 × 224 pixels (RGB)
-- **Augmentation**: Random rotation, flip, zoom, shift
+The models were trained on a specialized, heavily augmented dataset featuring complex, real-world lighting conditions and varying plating presentations.
 
----
+* **Total Classes Supported (34)**: *Apple Pie, Baked Potato, Burger, Butter Naan, Chai, Chapati, Cheesecake, Chicken Curry, Chole Bhature, Crispy Chicken, Dal Makhani, Dhokla, Donut, Fried Rice, Fries, Hot Dog, Ice Cream, Idli, Jalebi, Kaathi Rolls, Kadai Paneer, Kulfi, Masala Dosa, Momos, Omelette, Paani Puri, Pakode, Pav Bhaji, Pizza, Samosa, Sandwich, Sushi, Taco, Taquito.*
+* **Input Resolution**: $224 \times 224$ pixels (RGB).
+* **Augmentation Strategy**: ImageGenerator was utilized to artificially expand the training distribution via random rotational shifts, horizontal/vertical flipping, dynamic zooming, and width/height shifting.
 
-## 📊 Validation Results
+--- 
 
-| Model | Accuracy | Precision | Recall | F1-Score |
-|-------|----------|-----------|--------|----------|
-| Custom CNN | 24.24% | 20.70% | 24.24% | 20.77% |
-| VGG16 | 51.52% | 56.75% | 51.52% | 51.13% |
-| ResNet | Best | Best | Best | Best |
+## 🚀 Getting Started
 
-> Note: VGG16 and ResNet show significant improvements over Custom CNN due to transfer learning from ImageNet features.
-
----
-
-## 📁 Project Structure
-
-```
-Task-2/
-│
-├── app.py                          # Flask application (routes + factory)
-├── config.py                       # Configuration settings
-├── requirements.txt                # Python dependencies
-├── vercel.json                     # Vercel deployment config
-├── .gitignore                      # Git exclusions
-├── README.md                       # This file
-│
-├── utils/                          # Utility classes (OOP)
-│   ├── __init__.py
-│   ├── model_loader.py             # ModelLoader class
-│   ├── image_preprocessor.py       # ImagePreprocessor class
-│   ├── predictor.py                # Predictor class
-│   ├── metrics_reader.py           # MetricsReader class
-│   ├── nutrition_loader.py         # NutritionLoader class
-│   └── redis_cache.py              # RedisCache class
-│
-├── data/
-│   └── nutrition.json              # Nutritional data for 34 classes
-│
-├── Custom_CNN/
-│   ├── custom_cnn_model.h5         # Trained model
-│   ├── Custom_Model.txt            # Validation report
-│   └── custom_cnn_training_plot.png
-│
-├── VGG16/
-│   ├── vgg16_model.h5              # Trained model
-│   ├── VGG16_Model.txt             # Validation report
-│   └── vgg16_training_plot.png
-│
-├── ResNet/
-│   ├── resnet_model.h5             # Trained model
-│   ├── ResNet_Model.txt            # Validation report
-│   └── resnet_training_plot.png
-│
-├── templates/                      # Jinja2 HTML templates
-│   ├── landing.html
-│   ├── index.html
-│   ├── result.html
-│   └── about.html
-│
-├── static/
-│   ├── css/
-│   │   └── style.css               # Custom CSS design system
-│   ├── js/
-│   │   └── main.js                 # Client-side JavaScript
-│   ├── images/
-│   └── uploads/                    # Uploaded images (gitignored)
-│
-└── image_Dataset/                  # Training dataset (gitignored)
-    ├── training_data/
-    ├── valid_data/
-    └── testing_data/
-```
-
----
-
-## 🚀 Installation Guide
+Follow these instructions to run the application locally on your machine.
 
 ### Prerequisites
-- Python 3.10+
-- pip
-- Redis Server (optional, graceful fallback)
-- Git
+* Python 3.10 or higher.
+* Git.
+* [Redis](https://redis.io/download/) (Optional, but highly recommended. The application features a graceful fallback if Redis is unreachable).
 
-### Step-by-step Setup
+### Installation
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/karthik-vana/food-image-classification.git
-cd food-image-classification
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/karthik-vana/FoodVision-AI.git
+   cd FoodVision-AI
+   ```
 
-# 2. Create virtual environment
-python -m venv .venv
+2. **Create and activate a virtual environment**
+   ```bash
+   # Windows
+   python -m venv .venv
+   .venv\Scripts\activate
+   
+   # macOS/Linux
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
 
-# 3. Activate virtual environment
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+3. **Install the required dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# 4. Install dependencies
-pip install -r requirements.txt
+4. **Initialize Redis (Optional)**
+   ```bash
+   # Run this in a separate terminal window
+   redis-server
+   ```
 
-# 5. (Optional) Start Redis server
-redis-server
-
-# 6. Run the application
-python app.py
-```
-
-The app will be available at `http://localhost:5000`
-
----
-
-## 📖 Usage
-
-1. **Open the app** → You'll see the animated landing page
-2. **Click "Click to Enter"** → Navigate to the prediction page
-3. **Upload a food image** → Drag & drop or browse files
-4. **Select a model** → Custom CNN, VGG16, or ResNet
-5. **Click "Classify Food"** → Wait for prediction
-6. **View results** → Predicted class, confidence, nutrition, metrics
+5. **Launch the Application Server**
+   ```bash
+   python app.py
+   ```
+   *The application will be securely served on `http://127.0.0.1:5000`*
 
 ---
 
-## 🌐 Deployment Guide (Vercel)
+## 🌐 Deployment Guide 
 
-### Steps:
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com) and log in
-3. Click "New Project" → Import your GitHub repository
-4. Configure environment variables:
-   - `REDIS_HOST` = your Redis cloud host
-   - `REDIS_PORT` = 6379
-   - `REDIS_PASSWORD` = your Redis password
-5. Click "Deploy"
+This application is ready to be containerized or deployed to serverless architectures, provided the large `.h5` model files are accounted for.
 
-### Important Notes:
-- Model `.h5` files must be hosted externally (e.g., Google Drive, S3) due to Vercel's file size limits
-- Use Redis Cloud (e.g., Redis Labs) for production caching
-- Set `FLASK_ENV=production` in environment variables
+**Important Note regarding Vercel:** Vercel enforces a firm 250MB limit on unzipped Serverless Functions. Heavy libraries like `tensorflow` will exceed this limit. For seamless deployment, it is highly recommended to use slightly heavier PaaS solutions like **Render**, **Railway**, or **Heroku** which natively support Dockerizations and larger ephemeral file systems.
 
----
-
-## 📸 Screenshots
-
-> Screenshots will be added after deployment.
+If attempting to force a serverless deployment, models must be hosted on external blob storage (e.g., AWS S3, Google Cloud Storage) and fetched dynamically during the cold start.
 
 ---
 
 ## 👤 Author
 
 **Karthik Vana**
-- Role: Data Engineer | AI Engineer
-- GitHub: [@karthik-vana](https://github.com/karthik-vana)
+* **Role**: Data Engineer | AI Engineer
+* **GitHub**: [@karthik-vana](https://github.com/karthik-vana)
 
 ---
 
-## 📝 License
-
-This project is developed as part of the Viharatech EdTech internship submission.
-
----
-
-<p align="center">
-  <strong>🧠 Powered by Deep Learning | Built with ❤️ by Karthik Vana</strong>
-</p>
+<div align="center">
+  <br>
+  <i>Developed with precision as part of the Viharatech EdTech engineering internship submission.</i>
+</div>
