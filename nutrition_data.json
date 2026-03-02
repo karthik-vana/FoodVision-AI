@@ -1,0 +1,580 @@
+{
+    "apple_pie": {
+        "calories_kcl": 237,
+        "carbs_g": 34.0,
+        "protein_g": 2.0,
+        "fat_g": 11.0,
+        "fiber_g": 1.6,
+        "sugar_g": 15.2,
+        "vitamins": {
+            "vitamin_a_mg": 0.018,
+            "vitamin_c_mg": 1.6
+        },
+        "minerals": {
+            "calcium_mg": 11,
+            "iron_mg": 0.5,
+            "potassium_mg": 65
+        }
+    },
+    "Baked Potato": {
+        "calories_kcl": 161,
+        "carbs_g": 36.6,
+        "protein_g": 4.3,
+        "fat_g": 0.2,
+        "fiber_g": 3.8,
+        "sugar_g": 2.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.001,
+            "vitamin_c_mg": 16.6
+        },
+        "minerals": {
+            "calcium_mg": 26,
+            "iron_mg": 1.9,
+            "potassium_mg": 926
+        }
+    },
+    "burger": {
+        "calories_kcl": 354,
+        "carbs_g": 29.0,
+        "protein_g": 20.0,
+        "fat_g": 17.0,
+        "fiber_g": 1.3,
+        "sugar_g": 5.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.048,
+            "vitamin_c_mg": 1.0
+        },
+        "minerals": {
+            "calcium_mg": 126,
+            "iron_mg": 3.2,
+            "potassium_mg": 230
+        }
+    },
+    "butter_naan": {
+        "calories_kcl": 320,
+        "carbs_g": 48.0,
+        "protein_g": 9.0,
+        "fat_g": 10.0,
+        "fiber_g": 2.0,
+        "sugar_g": 3.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.03,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 50,
+            "iron_mg": 2.8,
+            "potassium_mg": 80
+        }
+    },
+    "chai": {
+        "calories_kcl": 120,
+        "carbs_g": 18.0,
+        "protein_g": 3.4,
+        "fat_g": 3.6,
+        "fiber_g": 0.0,
+        "sugar_g": 16.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.034,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 120,
+            "iron_mg": 0.2,
+            "potassium_mg": 160
+        }
+    },
+    "chapati": {
+        "calories_kcl": 104,
+        "carbs_g": 18.3,
+        "protein_g": 3.6,
+        "fat_g": 2.5,
+        "fiber_g": 2.0,
+        "sugar_g": 0.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.0,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 10,
+            "iron_mg": 1.0,
+            "potassium_mg": 62
+        }
+    },
+    "cheesecake": {
+        "calories_kcl": 321,
+        "carbs_g": 25.5,
+        "protein_g": 5.5,
+        "fat_g": 22.5,
+        "fiber_g": 0.3,
+        "sugar_g": 18.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.14,
+            "vitamin_c_mg": 0.6
+        },
+        "minerals": {
+            "calcium_mg": 57,
+            "iron_mg": 0.7,
+            "potassium_mg": 97
+        }
+    },
+    "chiken_curry": {
+        "calories_kcl": 243,
+        "carbs_g": 7.0,
+        "protein_g": 18.0,
+        "fat_g": 15.0,
+        "fiber_g": 1.2,
+        "sugar_g": 2.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.065,
+            "vitamin_c_mg": 4.0
+        },
+        "minerals": {
+            "calcium_mg": 30,
+            "iron_mg": 1.5,
+            "potassium_mg": 300
+        }
+    },
+    "chole_bhature": {
+        "calories_kcl": 450,
+        "carbs_g": 55.0,
+        "protein_g": 13.0,
+        "fat_g": 20.0,
+        "fiber_g": 8.0,
+        "sugar_g": 4.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.03,
+            "vitamin_c_mg": 4.0
+        },
+        "minerals": {
+            "calcium_mg": 70,
+            "iron_mg": 4.5,
+            "potassium_mg": 350
+        }
+    },
+    "Crispy Chicken": {
+        "calories_kcl": 290,
+        "carbs_g": 15.0,
+        "protein_g": 22.0,
+        "fat_g": 16.0,
+        "fiber_g": 0.5,
+        "sugar_g": 0.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.012,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 18,
+            "iron_mg": 1.2,
+            "potassium_mg": 220
+        }
+    },
+    "dal_makhani": {
+        "calories_kcl": 234,
+        "carbs_g": 27.0,
+        "protein_g": 10.0,
+        "fat_g": 9.0,
+        "fiber_g": 5.5,
+        "sugar_g": 2.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.04,
+            "vitamin_c_mg": 2.0
+        },
+        "minerals": {
+            "calcium_mg": 56,
+            "iron_mg": 3.5,
+            "potassium_mg": 420
+        }
+    },
+    "dhokla": {
+        "calories_kcl": 160,
+        "carbs_g": 25.0,
+        "protein_g": 6.0,
+        "fat_g": 4.0,
+        "fiber_g": 2.0,
+        "sugar_g": 5.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.005,
+            "vitamin_c_mg": 1.0
+        },
+        "minerals": {
+            "calcium_mg": 30,
+            "iron_mg": 1.5,
+            "potassium_mg": 120
+        }
+    },
+    "Donut": {
+        "calories_kcl": 253,
+        "carbs_g": 30.0,
+        "protein_g": 4.0,
+        "fat_g": 14.0,
+        "fiber_g": 0.7,
+        "sugar_g": 13.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.012,
+            "vitamin_c_mg": 0.1
+        },
+        "minerals": {
+            "calcium_mg": 26,
+            "iron_mg": 1.1,
+            "potassium_mg": 60
+        }
+    },
+    "fried_rice": {
+        "calories_kcl": 228,
+        "carbs_g": 37.0,
+        "protein_g": 5.5,
+        "fat_g": 6.5,
+        "fiber_g": 1.0,
+        "sugar_g": 1.2,
+        "vitamins": {
+            "vitamin_a_mg": 0.04,
+            "vitamin_c_mg": 3.0
+        },
+        "minerals": {
+            "calcium_mg": 20,
+            "iron_mg": 1.0,
+            "potassium_mg": 110
+        }
+    },
+    "Fries": {
+        "calories_kcl": 312,
+        "carbs_g": 41.0,
+        "protein_g": 3.4,
+        "fat_g": 15.0,
+        "fiber_g": 3.8,
+        "sugar_g": 0.3,
+        "vitamins": {
+            "vitamin_a_mg": 0.0,
+            "vitamin_c_mg": 4.7
+        },
+        "minerals": {
+            "calcium_mg": 12,
+            "iron_mg": 0.8,
+            "potassium_mg": 579
+        }
+    },
+    "Hot Dog": {
+        "calories_kcl": 290,
+        "carbs_g": 24.0,
+        "protein_g": 10.4,
+        "fat_g": 17.0,
+        "fiber_g": 0.8,
+        "sugar_g": 4.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.0,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 60,
+            "iron_mg": 2.3,
+            "potassium_mg": 160
+        }
+    },
+    "ice_cream": {
+        "calories_kcl": 207,
+        "carbs_g": 24.0,
+        "protein_g": 3.5,
+        "fat_g": 11.0,
+        "fiber_g": 0.7,
+        "sugar_g": 21.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.115,
+            "vitamin_c_mg": 0.6
+        },
+        "minerals": {
+            "calcium_mg": 128,
+            "iron_mg": 0.1,
+            "potassium_mg": 199
+        }
+    },
+    "idli": {
+        "calories_kcl": 39,
+        "carbs_g": 7.9,
+        "protein_g": 1.3,
+        "fat_g": 0.2,
+        "fiber_g": 0.5,
+        "sugar_g": 0.2,
+        "vitamins": {
+            "vitamin_a_mg": 0.001,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 4,
+            "iron_mg": 0.3,
+            "potassium_mg": 21
+        }
+    },
+    "jalebi": {
+        "calories_kcl": 380,
+        "carbs_g": 55.0,
+        "protein_g": 3.0,
+        "fat_g": 17.0,
+        "fiber_g": 0.5,
+        "sugar_g": 40.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.0,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 15,
+            "iron_mg": 0.8,
+            "potassium_mg": 30
+        }
+    },
+    "kaathio_rolls": {
+        "calories_kcl": 290,
+        "carbs_g": 32.0,
+        "protein_g": 12.0,
+        "fat_g": 13.0,
+        "fiber_g": 2.0,
+        "sugar_g": 2.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.035,
+            "vitamin_c_mg": 3.0
+        },
+        "minerals": {
+            "calcium_mg": 40,
+            "iron_mg": 2.0,
+            "potassium_mg": 180
+        }
+    },
+    "kadai_paneer": {
+        "calories_kcl": 295,
+        "carbs_g": 8.0,
+        "protein_g": 14.0,
+        "fat_g": 23.0,
+        "fiber_g": 2.0,
+        "sugar_g": 3.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.08,
+            "vitamin_c_mg": 12.0
+        },
+        "minerals": {
+            "calcium_mg": 350,
+            "iron_mg": 1.8,
+            "potassium_mg": 200
+        }
+    },
+    "kulfi": {
+        "calories_kcl": 240,
+        "carbs_g": 30.0,
+        "protein_g": 5.0,
+        "fat_g": 12.0,
+        "fiber_g": 0.5,
+        "sugar_g": 25.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.1,
+            "vitamin_c_mg": 1.0
+        },
+        "minerals": {
+            "calcium_mg": 160,
+            "iron_mg": 0.2,
+            "potassium_mg": 200
+        }
+    },
+    "masala_dosa": {
+        "calories_kcl": 206,
+        "carbs_g": 28.0,
+        "protein_g": 4.0,
+        "fat_g": 8.5,
+        "fiber_g": 2.0,
+        "sugar_g": 1.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.01,
+            "vitamin_c_mg": 5.0
+        },
+        "minerals": {
+            "calcium_mg": 18,
+            "iron_mg": 1.2,
+            "potassium_mg": 180
+        }
+    },
+    "momos": {
+        "calories_kcl": 210,
+        "carbs_g": 25.0,
+        "protein_g": 9.0,
+        "fat_g": 8.0,
+        "fiber_g": 1.5,
+        "sugar_g": 1.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.02,
+            "vitamin_c_mg": 2.0
+        },
+        "minerals": {
+            "calcium_mg": 20,
+            "iron_mg": 1.5,
+            "potassium_mg": 150
+        }
+    },
+    "omelette": {
+        "calories_kcl": 154,
+        "carbs_g": 0.6,
+        "protein_g": 11.0,
+        "fat_g": 12.0,
+        "fiber_g": 0.0,
+        "sugar_g": 0.4,
+        "vitamins": {
+            "vitamin_a_mg": 0.14,
+            "vitamin_c_mg": 0.0
+        },
+        "minerals": {
+            "calcium_mg": 50,
+            "iron_mg": 1.8,
+            "potassium_mg": 126
+        }
+    },
+    "paani_puri": {
+        "calories_kcl": 180,
+        "carbs_g": 30.0,
+        "protein_g": 3.0,
+        "fat_g": 5.5,
+        "fiber_g": 2.0,
+        "sugar_g": 3.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.01,
+            "vitamin_c_mg": 5.0
+        },
+        "minerals": {
+            "calcium_mg": 15,
+            "iron_mg": 1.0,
+            "potassium_mg": 150
+        }
+    },
+    "pakode": {
+        "calories_kcl": 260,
+        "carbs_g": 22.0,
+        "protein_g": 6.0,
+        "fat_g": 17.0,
+        "fiber_g": 3.0,
+        "sugar_g": 2.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.02,
+            "vitamin_c_mg": 5.0
+        },
+        "minerals": {
+            "calcium_mg": 30,
+            "iron_mg": 2.0,
+            "potassium_mg": 200
+        }
+    },
+    "pav_bhaji": {
+        "calories_kcl": 290,
+        "carbs_g": 38.0,
+        "protein_g": 7.0,
+        "fat_g": 12.0,
+        "fiber_g": 4.0,
+        "sugar_g": 5.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.12,
+            "vitamin_c_mg": 15.0
+        },
+        "minerals": {
+            "calcium_mg": 40,
+            "iron_mg": 2.5,
+            "potassium_mg": 350
+        }
+    },
+    "pizza": {
+        "calories_kcl": 266,
+        "carbs_g": 33.0,
+        "protein_g": 11.0,
+        "fat_g": 10.0,
+        "fiber_g": 2.3,
+        "sugar_g": 3.6,
+        "vitamins": {
+            "vitamin_a_mg": 0.074,
+            "vitamin_c_mg": 2.3
+        },
+        "minerals": {
+            "calcium_mg": 201,
+            "iron_mg": 2.3,
+            "potassium_mg": 184
+        }
+    },
+    "samosa": {
+        "calories_kcl": 262,
+        "carbs_g": 24.0,
+        "protein_g": 4.0,
+        "fat_g": 17.0,
+        "fiber_g": 2.5,
+        "sugar_g": 2.0,
+        "vitamins": {
+            "vitamin_a_mg": 0.005,
+            "vitamin_c_mg": 4.0
+        },
+        "minerals": {
+            "calcium_mg": 15,
+            "iron_mg": 1.5,
+            "potassium_mg": 170
+        }
+    },
+    "Sandwich": {
+        "calories_kcl": 250,
+        "carbs_g": 28.0,
+        "protein_g": 12.0,
+        "fat_g": 10.0,
+        "fiber_g": 2.0,
+        "sugar_g": 3.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.05,
+            "vitamin_c_mg": 2.0
+        },
+        "minerals": {
+            "calcium_mg": 100,
+            "iron_mg": 2.0,
+            "potassium_mg": 200
+        }
+    },
+    "sushi": {
+        "calories_kcl": 145,
+        "carbs_g": 30.0,
+        "protein_g": 5.5,
+        "fat_g": 0.5,
+        "fiber_g": 0.8,
+        "sugar_g": 8.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.015,
+            "vitamin_c_mg": 1.5
+        },
+        "minerals": {
+            "calcium_mg": 10,
+            "iron_mg": 0.5,
+            "potassium_mg": 60
+        }
+    },
+    "Taco": {
+        "calories_kcl": 226,
+        "carbs_g": 20.0,
+        "protein_g": 11.0,
+        "fat_g": 11.5,
+        "fiber_g": 2.5,
+        "sugar_g": 1.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.05,
+            "vitamin_c_mg": 1.5
+        },
+        "minerals": {
+            "calcium_mg": 102,
+            "iron_mg": 1.6,
+            "potassium_mg": 200
+        }
+    },
+    "Taquito": {
+        "calories_kcl": 200,
+        "carbs_g": 18.0,
+        "protein_g": 8.0,
+        "fat_g": 11.0,
+        "fiber_g": 1.0,
+        "sugar_g": 0.5,
+        "vitamins": {
+            "vitamin_a_mg": 0.02,
+            "vitamin_c_mg": 0.5
+        },
+        "minerals": {
+            "calcium_mg": 60,
+            "iron_mg": 1.2,
+            "potassium_mg": 130
+        }
+    }
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Food image classification result — predicted class, confidence score, nutritional information, and model metrics.">
+    <title>Result — AI Food Classification</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ═══ Navbar ═══ -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="{{ url_for('landing') }}">
+                <span class="brand-icon">🧠</span>
+                FoodAI
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="{{ url_for('home') }}">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="{{ url_for('about') }}">
+                            <i class="bi bi-info-circle-fill"></i> About
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <i class="bi bi-moon-fill"></i>
+                    <span class="theme-text">Dark</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ Result Hero ═══ -->
+    <div class="container">
+        <div class="result-hero animate-fade-in-up">
+            <h1 class="result-class-name">
+                {{ result.predicted_class | replace('_', ' ') }}
+            </h1>
+            <div class="result-confidence">
+                <i class="bi bi-bullseye"></i>
+                {{ result.confidence }}% Confidence
+            </div>
+            <br>
+            <span class="result-model-badge">
+                <i class="bi bi-cpu"></i> {{ result.model_used }}
+            </span>
+            {% if from_cache %}
+            <br>
+            <span class="cache-badge">
+                <i class="bi bi-lightning-fill"></i> Served from Redis Cache
+            </span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- ═══ Result Details ═══ -->
+    <div class="container pb-5">
+        <div class="row g-4">
+
+            <!-- ─── Uploaded Image ─── -->
+            <div class="col-lg-4 animate-fade-in-up stagger-1">
+                <div class="glass-card-static result-image-card">
+                    <h5 class="section-title">
+                        <i class="bi bi-image-fill"></i> Uploaded Image
+                    </h5>
+                    {% if result.image_url %}
+                    <img src="{{ result.image_url }}" alt="Uploaded food image">
+                    {% else %}
+                    <p class="text-muted">Image preview not available (cached result)</p>
+                    {% endif %}
+                </div>
+
+                <!-- ─── Top Predictions ─── -->
+                {% if result.top_predictions %}
+                <div class="glass-card-static top-predictions-card mt-4">
+                    <h5>
+                        <i class="bi bi-trophy-fill"></i> Top Predictions
+                    </h5>
+                    {% for class_name, score in result.top_predictions.items() %}
+                    <div class="prediction-item">
+                        <span class="prediction-rank">{{ loop.index }}</span>
+                        <span class="prediction-name">{{ class_name | replace('_', ' ') }}</span>
+                        <span class="prediction-score">{{ score }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- ─── Nutrition Info ─── -->
+            <div class="col-lg-4 animate-fade-in-up stagger-2">
+                <div class="glass-card-static nutrition-card">
+                    <h5>
+                        <i class="bi bi-heart-pulse-fill" style="color: var(--error);"></i>
+                        Nutritional Information
+                    </h5>
+                    <p class="text-muted mb-3" style="font-size: 0.85rem;">Per serving (approximate)</p>
+
+                    {% if result.nutrition %}
+                    <div class="nutrition-grid">
+                        <div class="nutrient-item">
+                            <div class="nutrient-value">{{ result.nutrition.get('calories_kcl', 'N/A') }}</div>
+                            <div class="nutrient-label">Calories (kcal)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value">{{ result.nutrition.get('protein_g', 'N/A') }}</div>
+                            <div class="nutrient-label">Protein (g)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value">{{ result.nutrition.get('carbs_g', 'N/A') }}</div>
+                            <div class="nutrient-label">Carbs (g)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value">{{ result.nutrition.get('fat_g', 'N/A') }}</div>
+                            <div class="nutrient-label">Fat (g)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value">{{ result.nutrition.get('fiber_g', 'N/A') }}</div>
+                            <div class="nutrient-label">Fiber (g)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value">{{ result.nutrition.get('sugar_g', 'N/A') }}</div>
+                            <div class="nutrient-label">Sugar (g)</div>
+                        </div>
+                    </div>
+
+                    <!-- Vitamins & Minerals -->
+                    {% if result.nutrition.get('vitamins') %}
+                    <h6 class="mt-3 mb-2" style="font-size:0.9rem; color: var(--text-secondary);"><i
+                            class="bi bi-capsule"></i> Vitamins</h6>
+                    <div class="nutrition-grid">
+                        <div class="nutrient-item">
+                            <div class="nutrient-value" style="font-size:1.1rem;">{{
+                                result.nutrition.vitamins.get('vitamin_a_mg', 'N/A') }}</div>
+                            <div class="nutrient-label">Vitamin A (mg)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value" style="font-size:1.1rem;">{{
+                                result.nutrition.vitamins.get('vitamin_c_mg', 'N/A') }}</div>
+                            <div class="nutrient-label">Vitamin C (mg)</div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if result.nutrition.get('minerals') %}
+                    <h6 class="mt-3 mb-2" style="font-size:0.9rem; color: var(--text-secondary);"><i
+                            class="bi bi-gem"></i> Minerals</h6>
+                    <div class="nutrition-grid">
+                        <div class="nutrient-item">
+                            <div class="nutrient-value" style="font-size:1.1rem;">{{
+                                result.nutrition.minerals.get('calcium_mg', 'N/A') }}</div>
+                            <div class="nutrient-label">Calcium (mg)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value" style="font-size:1.1rem;">{{
+                                result.nutrition.minerals.get('iron_mg', 'N/A') }}</div>
+                            <div class="nutrient-label">Iron (mg)</div>
+                        </div>
+                        <div class="nutrient-item">
+                            <div class="nutrient-value" style="font-size:1.1rem;">{{
+                                result.nutrition.minerals.get('potassium_mg', 'N/A') }}</div>
+                            <div class="nutrient-label">Potassium (mg)</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    <p class="text-muted">Nutrition data not available.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- ─── Model Metrics ─── -->
+            <div class="col-lg-4 animate-fade-in-up stagger-3">
+                <div class="glass-card-static metrics-card">
+                    <h5>
+                        <i class="bi bi-graph-up-arrow" style="color: var(--accent);"></i>
+                        Model Performance
+                    </h5>
+
+                    {% if result.metrics %}
+                    <!-- Accuracy Bar -->
+                    <div class="metric-bar-group">
+                        <div class="metric-bar-label">
+                            <span>Accuracy</span>
+                            <span>{{ result.metrics.get('accuracy', 0) }}%</span>
+                        </div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" data-width="{{ result.metrics.get('accuracy', 0) }}"></div>
+                        </div>
+                    </div>
+
+                    <!-- Precision Bar -->
+                    <div class="metric-bar-group">
+                        <div class="metric-bar-label">
+                            <span>Precision</span>
+                            <span>{{ result.metrics.get('precision', 0) }}%</span>
+                        </div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" data-width="{{ result.metrics.get('precision', 0) }}"></div>
+                        </div>
+                    </div>
+
+                    <!-- Recall Bar -->
+                    <div class="metric-bar-group">
+                        <div class="metric-bar-label">
+                            <span>Recall</span>
+                            <span>{{ result.metrics.get('recall', 0) }}%</span>
+                        </div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" data-width="{{ result.metrics.get('recall', 0) }}"></div>
+                        </div>
+                    </div>
+
+                    <!-- F1-Score Bar -->
+                    <div class="metric-bar-group">
+                        <div class="metric-bar-label">
+                            <span>F1-Score</span>
+                            <span>{{ result.metrics.get('f1_score', 0) }}%</span>
+                        </div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" data-width="{{ result.metrics.get('f1_score', 0) }}"></div>
+                        </div>
+                    </div>
+
+                    <!-- TP/TN/FP/FN Summary -->
+                    <div class="metrics-summary">
+                        <div class="metric-summary-item">
+                            <div class="metric-summary-value">{{ result.metrics.get('total_tp', 0) }}</div>
+                            <div class="metric-summary-label">True Pos</div>
+                        </div>
+                        <div class="metric-summary-item">
+                            <div class="metric-summary-value">{{ result.metrics.get('total_tn', 0) }}</div>
+                            <div class="metric-summary-label">True Neg</div>
+                        </div>
+                        <div class="metric-summary-item">
+                            <div class="metric-summary-value">{{ result.metrics.get('total_fp', 0) }}</div>
+                            <div class="metric-summary-label">False Pos</div>
+                        </div>
+                        <div class="metric-summary-item">
+                            <div class="metric-summary-value">{{ result.metrics.get('total_fn', 0) }}</div>
+                            <div class="metric-summary-label">False Neg</div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-muted">Metrics not available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Action Buttons ─── -->
+        <div class="text-center mt-4 animate-fade-in-up stagger-4">
+            <a href="{{ url_for('home') }}" class="predict-btn"
+                style="display: inline-flex; width: auto; text-decoration: none;">
+                <i class="bi bi-arrow-repeat"></i> Classify Another Image
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer-custom">
+        <div class="container">
+            <p>
+                <i class="bi bi-lightning-fill"></i>
+                Powered by <span class="footer-brand">Karthik Vana</span> | Data Engineer | AI Engineer
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

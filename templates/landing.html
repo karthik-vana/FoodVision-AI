@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Food Classification System — Classify food images into 34 categories using Deep Learning & Transfer Learning models.">
+    <title>AI Food Classification System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ═══ Background Animation ═══ -->
+    <div class="landing-wrapper">
+        <div class="landing-bg-animation">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+        </div>
+
+        <!-- Particles -->
+        <div class="particles"></div>
+
+        <!-- ═══ Content ═══ -->
+        <div class="landing-content">
+            <div class="landing-icon"></div>
+
+            <div class="welcome-text mb-2"
+                style="font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: var(--accent-light); letter-spacing: 2px; text-transform: uppercase;">
+                Welcome to the
+            </div>
+            <h1 class="landing-title">AI Food Classification System</h1>
+
+            <p class="landing-subtitle">
+                Powered by Deep Learning &amp; Transfer Learning
+            </p>
+            <p class="landing-tagline">
+                Classify food images into 34 categories with nutritional insights • CNN • VGG16 • ResNet
+            </p>
+
+            <a href="{{ url_for('home') }}" class="landing-cta" id="enterBtn">
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                Click to Enter
+            </a>
+
+            <!-- Feature Highlights -->
+            <div class="landing-features">
+                <div class="landing-feature-item">
+                    <i class="bi bi-cpu"></i>
+                    <span>3 Deep Learning Models</span>
+                </div>
+                <div class="landing-feature-item">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <span>34 Food Categories</span>
+                </div>
+                <div class="landing-feature-item">
+                    <i class="bi bi-lightning-fill"></i>
+                    <span>Redis Cached</span>
+                </div>
+                <div class="landing-feature-item">
+                    <i class="bi bi-heart-pulse-fill"></i>
+                    <span>Nutrition Insights</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

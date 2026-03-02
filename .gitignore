@@ -1,0 +1,53 @@
+# ─── Python ───────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+
+# ─── Virtual Environment ──────────────────────
+.venv/
+venv/
+ENV/
+env/
+
+# ─── IDE ──────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ─── OS ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Models (too large for GitHub) ────────────
+*.h5
+models/*.h5
+
+# ─── Dataset ──────────────────────────────────
+image_Dataset/
+image_Dataset.zip
+Food_image_Dataset.zip
+
+# ─── Uploads ──────────────────────────────────
+static/uploads/*
+!static/uploads/.gitkeep
+
+# ─── Environment ──────────────────────────────
+.env
+*.env
+
+# ─── Logs ─────────────────────────────────────
+*.log
+
+# ─── Misc ─────────────────────────────────────
+*.zip
+*.tar.gz

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="About the AI Food Classification System — project methodology, tech stack, and development approach.">
+    <title>About — AI Food Classification</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ═══ Navbar ═══ -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="{{ url_for('landing') }}">
+                <span class="brand-icon">🧠</span>
+                FoodAI
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="{{ url_for('home') }}">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom active" href="{{ url_for('about') }}">
+                            <i class="bi bi-info-circle-fill"></i> About
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <i class="bi bi-moon-fill"></i>
+                    <span class="theme-text">Dark</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ About Hero ═══ -->
+    <div class="container">
+        <div class="about-hero animate-fade-in-up">
+            <h1><i class="bi bi-info-circle-fill"></i> About This Project</h1>
+            <p class="text-muted mt-2">AI-powered Food Image Classification System</p>
+        </div>
+    </div>
+
+    <!-- ═══ About Sections ═══ -->
+    <div class="container pb-5">
+        <div class="row g-4">
+            <!-- What is this project? -->
+            <div class="col-lg-6 animate-fade-in-up stagger-1">
+                <div class="glass-card-static about-section">
+                    <h4>
+                        <i class="bi bi-question-circle-fill"></i>
+                        What is this project?
+                    </h4>
+                    <p>
+                        This is an <strong>AI-based Food Image Classification System</strong> that uses
+                        Convolutional Neural Networks (CNN) and Transfer Learning to classify food images
+                        into <strong>34 different categories</strong>. It provides instant nutritional
+                        insights for each predicted food item, making it a powerful tool for dietary
+                        awareness and food recognition.
+                    </p>
+                </div>
+            </div>
+
+            <!-- What does it do? -->
+            <div class="col-lg-6 animate-fade-in-up stagger-2">
+                <div class="glass-card-static about-section">
+                    <h4>
+                        <i class="bi bi-gear-fill"></i>
+                        What does it do?
+                    </h4>
+                    <p>
+                        The system accepts a food image as input and classifies it into one of
+                        <strong>34 food categories</strong>. Along with the prediction, it provides:
+                    </p>
+                    <ul>
+                        <li>Predicted food class with confidence score</li>
+                        <li>Top 5 prediction probabilities</li>
+                        <li>Detailed nutritional information (calories, protein, carbs, fat, fiber, vitamins, minerals)
+                        </li>
+                        <li>Model performance metrics (accuracy, precision, recall, F1-score)</li>
+                        <li>Redis-cached results for faster repeated lookups</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- How was it developed? -->
+            <div class="col-lg-12 animate-fade-in-up stagger-3">
+                <div class="glass-card-static about-section">
+                    <h4>
+                        <i class="bi bi-code-slash"></i>
+                        How was it developed?
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Model Training:</strong></p>
+                            <ul>
+                                <li>Trained using <strong>TensorFlow / Keras</strong> deep learning framework</li>
+                                <li>3 models: Custom CNN, VGG16 (Transfer Learning), ResNet (Transfer Learning)</li>
+                                <li>Data augmentation for robust training</li>
+                                <li>Comprehensive validation with TP, TN, FP, FN metrics</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Application Architecture:</strong></p>
+                            <ul>
+                                <li>Implemented using <strong>Object-Oriented Programming</strong> principles</li>
+                                <li>6 modular utility classes (ModelLoader, ImagePreprocessor, Predictor, MetricsReader,
+                                    NutritionLoader, RedisCache)</li>
+                                <li>Integrated <strong>Redis caching</strong> for performance optimization</li>
+                                <li>Built with <strong>Flask</strong> web framework</li>
+                                <li>Deployed using <strong>Vercel</strong> for production hosting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="col-lg-6 animate-fade-in-up stagger-4">
+                <div class="glass-card-static about-section">
+                    <h4>
+                        <i class="bi bi-stack"></i>
+                        Technology Stack
+                    </h4>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python 3.x</span>
+                        <span class="tech-badge">TensorFlow / Keras</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Bootstrap 5</span>
+                        <span class="tech-badge">NumPy</span>
+                        <span class="tech-badge">Pillow</span>
+                        <span class="tech-badge">Vercel</span>
+                        <span class="tech-badge">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Models Overview -->
+            <div class="col-lg-6 animate-fade-in-up stagger-4">
+                <div class="glass-card-static about-section">
+                    <h4>
+                        <i class="bi bi-diagram-3-fill"></i>
+                        Model Architectures
+                    </h4>
+                    <ul>
+                        <li>
+                            <strong>Custom CNN:</strong> A custom-built convolutional neural network
+                            designed and trained from scratch for food classification.
+                        </li>
+                        <li>
+                            <strong>VGG16:</strong> Pre-trained VGG16 model with transfer learning,
+                            fine-tuned on our food dataset for improved accuracy.
+                        </li>
+                        <li>
+                            <strong>ResNet:</strong> Pre-trained ResNet model with transfer learning,
+                            leveraging residual connections for deep feature extraction.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 34 Food Categories -->
+            <div class="col-lg-12 animate-fade-in-up">
+                <div class="glass-card-static about-section">
+                    <h4>
+                        <i class="bi bi-collection-fill"></i>
+                        34 Food Categories
+                    </h4>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Apple Pie</span>
+                        <span class="tech-badge">Baked Potato</span>
+                        <span class="tech-badge">Burger</span>
+                        <span class="tech-badge">Butter Naan</span>
+                        <span class="tech-badge">Chai</span>
+                        <span class="tech-badge">Chapati</span>
+                        <span class="tech-badge">Cheesecake</span>
+                        <span class="tech-badge">Chicken Curry</span>
+                        <span class="tech-badge">Chole Bhature</span>
+                        <span class="tech-badge">Crispy Chicken</span>
+                        <span class="tech-badge">Dal Makhani</span>
+                        <span class="tech-badge">Dhokla</span>
+                        <span class="tech-badge">Donut</span>
+                        <span class="tech-badge">Fried Rice</span>
+                        <span class="tech-badge">Fries</span>
+                        <span class="tech-badge">Hot Dog</span>
+                        <span class="tech-badge">Ice Cream</span>
+                        <span class="tech-badge">Idli</span>
+                        <span class="tech-badge">Jalebi</span>
+                        <span class="tech-badge">Kaathi Rolls</span>
+                        <span class="tech-badge">Kadai Paneer</span>
+                        <span class="tech-badge">Kulfi</span>
+                        <span class="tech-badge">Masala Dosa</span>
+                        <span class="tech-badge">Momos</span>
+                        <span class="tech-badge">Omelette</span>
+                        <span class="tech-badge">Paani Puri</span>
+                        <span class="tech-badge">Pakode</span>
+                        <span class="tech-badge">Pav Bhaji</span>
+                        <span class="tech-badge">Pizza</span>
+                        <span class="tech-badge">Samosa</span>
+                        <span class="tech-badge">Sandwich</span>
+                        <span class="tech-badge">Sushi</span>
+                        <span class="tech-badge">Taco</span>
+                        <span class="tech-badge">Taquito</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer-custom">
+        <div class="container">
+            <p>
+                <i class="bi bi-lightning-fill"></i>
+                Powered by <span class="footer-brand">Karthik Vana</span> | Data Engineer | AI Engineer
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

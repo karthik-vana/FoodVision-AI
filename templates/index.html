@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Upload a food image and classify it using Custom CNN, VGG16, or ResNet deep learning models.">
+    <title>Predict — AI Food Classification</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ═══ Flash Messages (hidden, consumed by JS) ═══ -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="flash-data" data-message="{{ message }}" data-category="{{ category }}" style="display:none;"></div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- ═══ Loading Spinner ═══ -->
+    <div class="spinner-overlay" id="spinnerOverlay">
+        <div class="spinner-ring"></div>
+        <div class="spinner-text">Analyzing your food image...</div>
+    </div>
+
+    <!-- ═══ Navbar ═══ -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="{{ url_for('landing') }}">
+                <span class="brand-icon"> </span>
+                FoodAI
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom active" href="{{ url_for('home') }}">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="{{ url_for('about') }}">
+                            <i class="bi bi-info-circle-fill"></i> About
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <i class="bi bi-moon-fill"></i>
+                    <span class="theme-text">Dark</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ Page Header ═══ -->
+    <div class="container">
+        <div class="page-header animate-fade-in-up">
+            <h1><i class="bi bi-camera-fill"></i> Food Image Classifier</h1>
+            <p>Upload a food image, select a model, and get instant predictions with nutritional insights</p>
+            <div class="mt-2">
+                {% if redis_status and redis_status.connected %}
+                <span class="redis-badge connected">
+                    <span class="dot"></span> Redis Connected
+                </span>
+                {% else %}
+                <span class="redis-badge disconnected">
+                    <span class="dot"></span> Redis Offline
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Main Content ═══ -->
+    <div class="container pb-5">
+        <div class="row g-4">
+            <!-- ─── Left Column: Upload & Controls ─── -->
+            <div class="col-lg-7 animate-fade-in-up stagger-1">
+                <div class="glass-card-static p-4">
+                    <form id="predictForm" action="{{ url_for('predict') }}" method="POST"
+                        enctype="multipart/form-data">
+
+                        <!-- Drag & Drop Upload Zone -->
+                        <div class="upload-zone" id="uploadZone">
+                            <div class="upload-icon">
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+                            </div>
+                            <h4>Drag &amp; Drop your food image</h4>
+                            <p>Supports PNG, JPG, JPEG, WEBP, BMP — Max 16MB</p>
+                            <span class="browse-btn">
+                                <i class="bi bi-folder2-open"></i> Browse Files
+                            </span>
+                            <input type="file" name="image" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.bmp" hidden>
+
+                            <!-- Image Preview -->
+                            <div class="image-preview-container" id="imagePreview">
+                                <img src="" alt="Preview" id="previewImg">
+                                <div class="file-name" id="fileName"></div>
+                            </div>
+                        </div>
+
+                        <!-- Model Selector -->
+                        <div class="model-selector">
+                            <label for="modelSelect">
+                                <i class="bi bi-diagram-3-fill"></i> Select AI Model
+                            </label>
+                            <select name="model" id="modelSelect">
+                                {% for key, name in models.items() %}
+                                <option value="{{ key }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <!-- Predict Button -->
+                        <button type="submit" class="predict-btn" id="predictBtn" disabled>
+                            <i class="bi bi-lightning-charge-fill"></i>
+                            Classify Food
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ─── Right Column: Class Labels ─── -->
+            <div class="col-lg-5 animate-fade-in-up stagger-2">
+                <div class="glass-card-static p-4">
+                    <h5 class="section-title">
+                        <i class="bi bi-collection-fill"></i>
+                        34 Food Categories
+                    </h5>
+                    <div class="class-grid">
+                        {% for label in class_labels %}
+                        <div class="class-card-item">
+                            <div class="class-card-img"
+                                style="background-image: url('{{ url_for('static', filename='images/classes/' + label + '.jpg') }}');">
+                            </div>
+                            <div class="class-card-name">{{ label.replace('_', ' ').title() }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer-custom">
+        <div class="container">
+            <p>
+                <i class="bi bi-lightning-fill"></i>
+                Powered by <span class="footer-brand">Karthik Vana</span> | Data Engineer | AI Engineer
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
