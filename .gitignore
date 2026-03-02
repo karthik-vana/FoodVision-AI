@@ -29,9 +29,8 @@ Thumbs.db
 desktop.ini
 
 # ─── Models ───────────────────────────────────
-# Exceed GitHub LFS Bandwidth/Storage quotas
-VGG16/*.h5
-ResNet/*.h5
+*.h5
+models/*.h5
 
 # ─── Dataset ──────────────────────────────────
 image_Dataset/
