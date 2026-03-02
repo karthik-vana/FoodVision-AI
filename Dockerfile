@@ -29,5 +29,5 @@ RUN mkdir -p Custom_CNN VGG16 ResNet && \
 # 7. Expose the port
 EXPOSE 5000
 
-# 8. Start Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]
+# 8. Start Gunicorn with extended timeout to allow first-request download of large models
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "app:app"]

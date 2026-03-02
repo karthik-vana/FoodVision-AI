@@ -64,9 +64,28 @@ class ModelLoader:
             model_path = self.model_paths[model_key]
 
             if not os.path.exists(model_path):
-                raise FileNotFoundError(
-                    f"Model file not found at: {model_path}"
-                )
+                logger.info("Model file not found at %s. Attempting to download...", model_path)
+                gdrive_ids = {
+                    'custom_cnn': '1bvpRGlc5F1Xriceb4_xZD9xcO52xR9QS',
+                    'vgg16': '1dvLCg6R1F7NJOvAW_6rxOBLZhGGG7Q57',
+                    'resnet': '175WNbjCs_mZ7jImQaahRESRGaMigBl5r',
+                }
+                
+                if model_key in gdrive_ids:
+                    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+                    try:
+                        import gdown
+                        gdown.download(id=gdrive_ids[model_key], output=model_path, quiet=False)
+                        
+                        if not os.path.exists(model_path):
+                            raise FileNotFoundError("gdown executed safely, but file was not created.")
+                    except Exception as dl_err:
+                        logger.error("Failed to download model '%s': %s", model_key, dl_err)
+                        raise FileNotFoundError(
+                            f"Model file not found and download failed: {model_path} ({str(dl_err)})"
+                        ) from dl_err
+                else:
+                    raise FileNotFoundError(f"Model file not found and no download URL known: {model_path}")
 
             # Lazy import to avoid startup overhead
             from tensorflow.keras.models import load_model as keras_load_model
