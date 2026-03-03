@@ -8,6 +8,8 @@ services:
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 300 --workers 1 --threads 2
     healthCheckPath: /api/status
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.10.0"
       - key: FLASK_DEBUG
         value: "False"
       - key: PYTHONUNBUFFERED
