@@ -1,0 +1,17 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+*.h5
+image_Dataset/
+*.zip
+*.tar.gz
+.env
+*.log
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+.gemini/

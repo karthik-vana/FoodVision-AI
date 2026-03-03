@@ -1,3 +1,13 @@
+---
+title: FoodVision AI
+emoji: 🍕
+colorFrom: indigo
+colorTo: cyan
+sdk: docker
+app_port: 7860
+pinned: true
+---
+
 <div align="center">
   
 # 🧠 FoodVision AI: Deep Learning Diet & Nutrition Analyzer
