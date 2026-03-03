@@ -173,13 +173,13 @@ def create_app(config_class=Config):
             model = model_loader.load_model(model_key)
 
             # ── Preprocess Image IN MEMORY ─────────────────────────
-            # Use the dedicated bytes preprocessor
+            # Use the dedicated bytes preprocessor with model-specific size
             target_size_override = None
             if hasattr(model, 'input_shape') and len(model.input_shape) >= 3:
                 # Check for standard (None, H, W, 3) shape
                 target_size_override = (model.input_shape[1], model.input_shape[2])
                 
-            img_tensor = image_preprocessor.preprocess_from_bytes(image_bytes)
+            img_tensor = image_preprocessor.preprocess_from_bytes(image_bytes, target_size=target_size_override)
 
             # ── Run Prediction ──────────────────────────────────────
             prediction = predictor.predict(model, img_tensor)
@@ -244,6 +244,10 @@ def create_app(config_class=Config):
     # ─── Error Handlers ─────────────────────────────────────────────
     @app.errorhandler(404)
     def not_found(error):
+        # Don't flash for favicon, static files, or API requests
+        path = request.path
+        if path.startswith('/static/') or path == '/favicon.ico' or path.startswith('/api/'):
+            return '', 404
         flash('Page not found.', 'error')
         return redirect(url_for('landing'))
 
@@ -267,8 +271,9 @@ def create_app(config_class=Config):
 app = create_app()
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=port,
         debug=True,
     )

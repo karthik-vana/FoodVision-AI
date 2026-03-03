@@ -21,4 +21,3 @@ if test:
     print("apple_pie:", json.loads(test))
 else:
     print(" 'apple_pie' not found in Redis.")
-    

@@ -81,12 +81,13 @@ class ImagePreprocessor:
             logger.error("Image preprocessing failed: %s", str(e))
             raise RuntimeError(f"Failed to preprocess image: {str(e)}") from e
 
-    def preprocess_from_bytes(self, image_bytes: bytes) -> np.ndarray:
+    def preprocess_from_bytes(self, image_bytes: bytes, target_size: tuple = None) -> np.ndarray:
         """
         Preprocess an image directly from bytes (for in-memory processing).
         
         Args:
             image_bytes (bytes): Raw image bytes.
+            target_size (tuple, optional): Target size override (H, W). Defaults to self.target_size.
         
         Returns:
             np.ndarray: Preprocessed image tensor of shape (1, H, W, 3).
@@ -102,8 +103,10 @@ class ImagePreprocessor:
             if not image_bytes:
                 raise ValueError("Empty image bytes received.")
 
+            size = target_size if target_size else self.target_size
+
             img = Image.open(BytesIO(image_bytes)).convert('RGB')
-            img = img.resize(self.target_size)
+            img = img.resize(size)
 
             img_array = np.array(img, dtype=np.float32) / 255.0
             img_tensor = np.expand_dims(img_array, axis=0)

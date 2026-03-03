@@ -50,7 +50,7 @@ class Config:
     }
 
     # ─── Image Preprocessing ───────────────────────────────────────────
-    IMAGE_SIZE = (224, 224)
+    IMAGE_SIZE = (256, 256)
 
     # ─── Nutrition Data ─────────────────────────────────────────────────
     NUTRITION_PATH = os.path.join(BASE_DIR, 'data', 'nutrition.json')

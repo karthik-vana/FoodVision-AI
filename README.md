@@ -146,11 +146,14 @@ Follow these instructions to run the application locally on your machine.
 
 ## 🌐 Deployment Guide 
 
-This application is ready to be containerized or deployed to serverless architectures, provided the large `.h5` model files are accounted for.
+This application is deployed to **Render** using its native **Python environment** (no Docker required).
 
-**Important Note regarding Vercel:** Vercel enforces a firm 250MB limit on unzipped Serverless Functions. Heavy libraries like `tensorflow` will exceed this limit. For seamless deployment, it is highly recommended to use slightly heavier PaaS solutions like **Render**, **Railway**, or **Heroku** which natively support Dockerizations and larger ephemeral file systems.
+The included `render.yaml` blueprint auto-configures the service:
+- **Build**: `pip install -r requirements.txt`
+- **Start**: `gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120`
+- **Models**: Automatically downloaded from Google Drive on first request via `gdown`.
 
-If attempting to force a serverless deployment, models must be hosted on external blob storage (e.g., AWS S3, Google Cloud Storage) and fetched dynamically during the cold start.
+**Note:** Vercel and similar serverless platforms enforce strict size limits that TensorFlow exceeds. Use PaaS solutions like **Render**, **Railway**, or **Heroku** which support larger runtimes and ephemeral file systems.
 
 ---
 

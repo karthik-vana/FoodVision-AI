@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="About the AI Food Classification System — project methodology, tech stack, and development approach.">
-    <title>About — AI Food Classification</title>
+        content="About FoodVision AI — How to use, why to use, project methodology, deep learning models, tech stack, and developer info.">
+    <title>About — FoodVision AI</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,17 +52,216 @@
     </nav>
 
     <!-- ═══ About Hero ═══ -->
-    <div class="container">
-        <div class="about-hero animate-fade-in-up">
-            <h1><i class="bi bi-info-circle-fill"></i> About This Project</h1>
-            <p class="text-muted mt-2">AI-powered Food Image Classification System</p>
+    <div class="about-hero-section">
+        <div class="about-hero-bg">
+            <div class="about-orb"></div>
+            <div class="about-orb"></div>
+            <div class="about-orb"></div>
+        </div>
+        <div class="container position-relative" style="z-index: 1;">
+            <div class="about-hero animate-fade-in-up">
+                <div class="about-hero-badge">
+                    <i class="bi bi-stars"></i> Open Source AI Project
+                </div>
+                <h1><i class="bi bi-cpu-fill"></i> FoodVision AI</h1>
+                <p class="about-hero-subtitle">
+                    An end-to-end Deep Learning application that classifies <strong>34 complex food categories</strong>
+                    using advanced Transfer Learning architectures and serves real-time nutritional insights
+                    via a lightning-fast Flask & Redis backend.
+                </p>
+                <div class="about-hero-stats">
+                    <div class="about-stat-item">
+                        <div class="about-stat-number">3</div>
+                        <div class="about-stat-label">AI Models</div>
+                    </div>
+                    <div class="about-stat-divider"></div>
+                    <div class="about-stat-item">
+                        <div class="about-stat-number">34</div>
+                        <div class="about-stat-label">Food Classes</div>
+                    </div>
+                    <div class="about-stat-divider"></div>
+                    <div class="about-stat-item">
+                        <div class="about-stat-number">&lt;10ms</div>
+                        <div class="about-stat-label">Cached Response</div>
+                    </div>
+                    <div class="about-stat-divider"></div>
+                    <div class="about-stat-item">
+                        <div class="about-stat-number">6</div>
+                        <div class="about-stat-label">OOP Modules</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- ═══ About Sections ═══ -->
+    <!-- ═══ About Content ═══ -->
     <div class="container pb-5">
-        <div class="row g-4">
-            <!-- What is this project? -->
+
+        <!-- ═══ DEVELOPER SECTION (TOP) ═══ -->
+        <div class="about-section-header reveal-on-scroll reveal-slide-up" style="margin-top: 0.5rem;">
+            <span class="about-section-number">★</span>
+            <h2><i class="bi bi-person-workspace"></i> Meet the Developer</h2>
+            <p>The mind behind FoodVision AI.</p>
+        </div>
+
+        <div class="reveal-on-scroll reveal-scale-up mb-5" id="developerCard">
+            <div class="developer-card">
+                <div class="developer-card-glow"></div>
+                <div class="developer-card-content">
+                    <div class="developer-avatar reveal-on-scroll reveal-slide-left reveal-delay-1">
+                        <div class="developer-avatar-ring">
+                            <img src="{{ url_for('static', filename='images/karthik_vana.png') }}"
+                                alt="Karthik Vana — Developer" class="developer-photo" />
+                        </div>
+                    </div>
+                    <div class="developer-info reveal-on-scroll reveal-slide-right reveal-delay-2">
+                        <h3 class="developer-name">Karthik Vana</h3>
+                        <div class="developer-roles">
+                            <span class="developer-role-badge"><i class="bi bi-database-fill"></i> Data Engineer</span>
+                            <span class="developer-role-badge"><i class="bi bi-robot"></i> AI Engineer</span>
+                        </div>
+                        <p class="developer-bio">
+                            A passionate engineer with a deep interest in building intelligent systems that bridge
+                            the gap between cutting-edge AI research and real-world applications. Karthik specializes
+                            in designing end-to-end machine learning pipelines, training deep neural networks, and
+                            deploying production-grade AI applications. FoodVision AI showcases his ability to combine
+                            computer vision, backend engineering, and modern frontend design into a cohesive, polished
+                            product.
+                        </p>
+                        <p class="developer-bio" style="font-style: italic; opacity: 0.85;">
+                            "I believe technology should be accessible, intuitive, and beautiful. Every line of code in
+                            FoodVision AI is written with that philosophy in mind."
+                        </p>
+                        <div class="developer-links">
+                            <a href="https://portfolio-v-smoky.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="developer-link-btn portfolio">
+                                <i class="bi bi-globe2"></i> Portfolio
+                            </a>
+                            <a href="https://github.com/karthik-vana" target="_blank" rel="noopener noreferrer"
+                                class="developer-link-btn github">
+                                <i class="bi bi-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── HOW TO USE ─────────────────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">01</span>
+            <h2><i class="bi bi-play-circle-fill"></i> How to Use This App</h2>
+            <p>Get started in 3 simple steps — no signup, no installation required.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4 animate-fade-in-up stagger-1">
+                <div class="how-to-step-card">
+                    <div class="step-number-circle">1</div>
+                    <div class="step-icon-large"><i class="bi bi-cloud-arrow-up-fill"></i></div>
+                    <h5>Upload Your Image</h5>
+                    <p>Drag & drop or browse to upload a food image. Supports PNG, JPG, JPEG, WEBP, and BMP formats up
+                        to 16 MB.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate-fade-in-up stagger-2">
+                <div class="how-to-step-card">
+                    <div class="step-number-circle">2</div>
+                    <div class="step-icon-large"><i class="bi bi-diagram-3-fill"></i></div>
+                    <h5>Select an AI Model</h5>
+                    <p>Choose from <strong>Custom CNN</strong>, <strong>VGG16</strong>, or <strong>ResNet</strong> —
+                        each with different strengths. ResNet is recommended for best accuracy.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate-fade-in-up stagger-3">
+                <div class="how-to-step-card">
+                    <div class="step-number-circle">3</div>
+                    <div class="step-icon-large"><i class="bi bi-lightning-charge-fill"></i></div>
+                    <h5>Get Instant Results</h5>
+                    <p>Click <strong>"Classify Food"</strong> and instantly receive the predicted class, confidence
+                        score, top-5 predictions, full nutritional breakdown, and model metrics.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── WHY USE THIS APP ───────────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">02</span>
+            <h2><i class="bi bi-rocket-takeoff-fill"></i> Why Use FoodVision AI?</h2>
+            <p>What makes this system stand out from the rest.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-1">
+                <div class="why-use-card">
+                    <div class="why-use-icon" style="background: linear-gradient(135deg, #6366f1, #818cf8);">
+                        <i class="bi bi-bullseye"></i>
+                    </div>
+                    <h5>Multi-Model Comparison</h5>
+                    <p>Toggle between 3 distinct neural network architectures in real-time. Compare inference results,
+                        confidence scores, and understand which model performs best for different food types.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-2">
+                <div class="why-use-card">
+                    <div class="why-use-icon" style="background: linear-gradient(135deg, #06b6d4, #22d3ee);">
+                        <i class="bi bi-heart-pulse-fill"></i>
+                    </div>
+                    <h5>Instant Nutrition Insights</h5>
+                    <p>Every prediction comes with a complete macronutrient and micronutrient profile — calories,
+                        protein, carbs, fat, fiber, sugar, vitamins & minerals — for smarter dietary decisions.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-3">
+                <div class="why-use-card">
+                    <div class="why-use-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                        <i class="bi bi-lightning-fill"></i>
+                    </div>
+                    <h5>Blazing Fast with Redis</h5>
+                    <p>Intelligent caching hashes image bytes and stores prediction results. Repeated queries return in
+                        under 10ms — bypassing the entire neural network forward pass.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-1">
+                <div class="why-use-card">
+                    <div class="why-use-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <h5>Live Model Metrics</h5>
+                    <p>Alongside every result, the app dynamically displays accuracy, precision, recall, F1-score, and
+                        confusion matrix statistics (TP, TN, FP, FN) for complete transparency.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-2">
+                <div class="why-use-card">
+                    <div class="why-use-icon" style="background: linear-gradient(135deg, #ec4899, #f472b6);">
+                        <i class="bi bi-palette-fill"></i>
+                    </div>
+                    <h5>Premium Glassmorphism UI</h5>
+                    <p>A sleek, modern, fully responsive frontend with dark/light mode, animated transitions,
+                        drag-and-drop upload, and a beautiful design that feels premium on every device.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-3">
+                <div class="why-use-card">
+                    <div class="why-use-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h5>Privacy-First & No Signup</h5>
+                    <p>Images are processed in-memory and never stored on disk. No user accounts, no tracking, no data
+                        retention. Upload, classify, and move on — simple as that.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── WHAT IS THIS PROJECT ───────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">03</span>
+            <h2><i class="bi bi-info-circle-fill"></i> Project Overview</h2>
+            <p>Deep dive into what FoodVision AI is and how it works under the hood.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
             <div class="col-lg-6 animate-fade-in-up stagger-1">
                 <div class="glass-card-static about-section">
                     <h4>
@@ -70,16 +269,20 @@
                         What is this project?
                     </h4>
                     <p>
-                        This is an <strong>AI-based Food Image Classification System</strong> that uses
-                        Convolutional Neural Networks (CNN) and Transfer Learning to classify food images
-                        into <strong>34 different categories</strong>. It provides instant nutritional
-                        insights for each predicted food item, making it a powerful tool for dietary
-                        awareness and food recognition.
+                        <strong>FoodVision AI</strong> bridges the gap between state-of-the-art computer vision
+                        and everyday dietary tracking. By simply uploading an image of a meal, the system
+                        instantly identifies the food type and retrieves its complete macronutrient and
+                        micronutrient profile.
+                    </p>
+                    <p>
+                        Built with scalability and rapid inference in mind, the backend leverages
+                        <strong>Redis caching</strong> to ensure O(1) response times for identical or repeated
+                        image queries, bypassing the expensive neural network forward pass. The frontend
+                        features a modern, responsive <strong>Glassmorphism UI</strong> for a premium user experience.
                     </p>
                 </div>
             </div>
 
-            <!-- What does it do? -->
             <div class="col-lg-6 animate-fade-in-up stagger-2">
                 <div class="glass-card-static about-section">
                     <h4>
@@ -87,146 +290,319 @@
                         What does it do?
                     </h4>
                     <p>
-                        The system accepts a food image as input and classifies it into one of
+                        The system accepts a food image and classifies it into one of
                         <strong>34 food categories</strong>. Along with the prediction, it provides:
                     </p>
                     <ul>
-                        <li>Predicted food class with confidence score</li>
-                        <li>Top 5 prediction probabilities</li>
-                        <li>Detailed nutritional information (calories, protein, carbs, fat, fiber, vitamins, minerals)
-                        </li>
-                        <li>Model performance metrics (accuracy, precision, recall, F1-score)</li>
-                        <li>Redis-cached results for faster repeated lookups</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Predicted food class with
+                            confidence score</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Top 5 prediction probabilities
+                            ranked</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Full nutritional breakdown
+                            (calories, protein, carbs, fat, fiber, sugar)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Vitamins (A, C) and minerals
+                            (calcium, iron, potassium)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Model performance metrics
+                            (accuracy, precision, recall, F1)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Confusion matrix stats (TP, TN,
+                            FP, FN)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-1"></i> Redis-cached results for instant
+                            repeated lookups</li>
                     </ul>
                 </div>
             </div>
+        </div>
 
-            <!-- How was it developed? -->
-            <div class="col-lg-12 animate-fade-in-up stagger-3">
-                <div class="glass-card-static about-section">
-                    <h4>
-                        <i class="bi bi-code-slash"></i>
-                        How was it developed?
-                    </h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Model Training:</strong></p>
-                            <ul>
-                                <li>Trained using <strong>TensorFlow / Keras</strong> deep learning framework</li>
-                                <li>3 models: Custom CNN, VGG16 (Transfer Learning), ResNet (Transfer Learning)</li>
-                                <li>Data augmentation for robust training</li>
-                                <li>Comprehensive validation with TP, TN, FP, FN metrics</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Application Architecture:</strong></p>
-                            <ul>
-                                <li>Implemented using <strong>Object-Oriented Programming</strong> principles</li>
-                                <li>6 modular utility classes (ModelLoader, ImagePreprocessor, Predictor, MetricsReader,
-                                    NutritionLoader, RedisCache)</li>
-                                <li>Integrated <strong>Redis caching</strong> for performance optimization</li>
-                                <li>Built with <strong>Flask</strong> web framework</li>
-                                <li>Deployed using <strong>Vercel</strong> for production hosting</li>
-                            </ul>
-                        </div>
+        <!-- ── DEEP LEARNING MODELS ───────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">04</span>
+            <h2><i class="bi bi-diagram-3-fill"></i> Deep Learning Architectures</h2>
+            <p>Three distinct CNNs trained to demonstrate the power of Transfer Learning.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4 animate-fade-in-up stagger-1">
+                <div class="model-architecture-card">
+                    <div class="model-card-header baseline">
+                        <i class="bi bi-layers-fill"></i>
+                        <span class="model-card-tag">Baseline</span>
                     </div>
+                    <h5>Custom CNN</h5>
+                    <p class="model-card-desc">A sequential architecture built from scratch with interleaved Conv2D
+                        (ReLU) and MaxPooling2D layers, flattened into fully connected Dense networks with heavy Dropout
+                        to combat overfitting.</p>
+                    <div class="model-card-accuracy">
+                        <span class="accuracy-label">Accuracy</span>
+                        <span class="accuracy-value baseline-color">~24%</span>
+                    </div>
+                    <div class="model-card-detail">Establishes dataset difficulty and the necessity for deeper
+                        architectures.</div>
                 </div>
             </div>
-
-            <!-- Tech Stack -->
-            <div class="col-lg-6 animate-fade-in-up stagger-4">
-                <div class="glass-card-static about-section">
-                    <h4>
-                        <i class="bi bi-stack"></i>
-                        Technology Stack
-                    </h4>
-                    <div class="tech-badges">
-                        <span class="tech-badge">Python 3.x</span>
-                        <span class="tech-badge">TensorFlow / Keras</span>
-                        <span class="tech-badge">Flask</span>
-                        <span class="tech-badge">Redis</span>
-                        <span class="tech-badge">HTML5</span>
-                        <span class="tech-badge">CSS3</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Bootstrap 5</span>
-                        <span class="tech-badge">NumPy</span>
-                        <span class="tech-badge">Pillow</span>
-                        <span class="tech-badge">Vercel</span>
-                        <span class="tech-badge">Git / GitHub</span>
+            <div class="col-lg-4 animate-fade-in-up stagger-2">
+                <div class="model-architecture-card">
+                    <div class="model-card-header transfer">
+                        <i class="bi bi-box-arrow-in-down-right"></i>
+                        <span class="model-card-tag">Transfer Learning</span>
                     </div>
+                    <h5>VGG16</h5>
+                    <p class="model-card-desc">Utilizes the deep VGG16 convolutional base frozen on ImageNet. A custom
+                        classification head with GlobalAveragePooling2D and Dense layers is fine-tuned on 34 food
+                        classes.</p>
+                    <div class="model-card-accuracy">
+                        <span class="accuracy-label">Accuracy</span>
+                        <span class="accuracy-value transfer-color">~51%</span>
+                    </div>
+                    <div class="model-card-detail">Massive leap in spatial feature recognition over baseline.</div>
                 </div>
             </div>
+            <div class="col-lg-4 animate-fade-in-up stagger-3">
+                <div class="model-architecture-card recommended">
+                    <div class="model-card-header best">
+                        <i class="bi bi-trophy-fill"></i>
+                        <span class="model-card-tag">★ Recommended</span>
+                    </div>
+                    <h5>ResNet</h5>
+                    <p class="model-card-desc">Employs identity shortcut connections that skip layers, solving the
+                        vanishing gradient problem. Uses ImageNet weights with a fine-tuned top dense classification
+                        head.</p>
+                    <div class="model-card-accuracy">
+                        <span class="accuracy-label">Accuracy</span>
+                        <span class="accuracy-value best-color">Best Overall</span>
+                    </div>
+                    <div class="model-card-detail">Highest precision, recall stability, and robustness across food
+                        types.</div>
+                </div>
+            </div>
+        </div>
 
-            <!-- Models Overview -->
-            <div class="col-lg-6 animate-fade-in-up stagger-4">
+        <!-- ── HOW IT WAS DEVELOPED ───────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">05</span>
+            <h2><i class="bi bi-code-slash"></i> Development & Architecture</h2>
+            <p>Under the hood — how FoodVision AI was engineered.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6 animate-fade-in-up stagger-1">
                 <div class="glass-card-static about-section">
-                    <h4>
-                        <i class="bi bi-diagram-3-fill"></i>
-                        Model Architectures
-                    </h4>
+                    <h4><i class="bi bi-gpu-card"></i> Model Training Pipeline</h4>
                     <ul>
-                        <li>
-                            <strong>Custom CNN:</strong> A custom-built convolutional neural network
-                            designed and trained from scratch for food classification.
-                        </li>
-                        <li>
-                            <strong>VGG16:</strong> Pre-trained VGG16 model with transfer learning,
-                            fine-tuned on our food dataset for improved accuracy.
-                        </li>
-                        <li>
-                            <strong>ResNet:</strong> Pre-trained ResNet model with transfer learning,
-                            leveraging residual connections for deep feature extraction.
-                        </li>
+                        <li>Trained using <strong>TensorFlow / Keras 2.16</strong> deep learning framework</li>
+                        <li>3 architectures: Custom CNN, VGG16, and ResNet with Transfer Learning</li>
+                        <li>Input resolution: <strong>256 × 256 pixels</strong> (RGB)</li>
+                        <li>Data augmentation via ImageDataGenerator — rotation, flipping, zoom, shifting</li>
+                        <li>Comprehensive validation with per-class TP, TN, FP, FN metrics</li>
+                        <li>Models saved as <strong>.h5</strong> files and auto-downloaded via Google Drive</li>
                     </ul>
                 </div>
             </div>
-
-            <!-- 34 Food Categories -->
-            <div class="col-lg-12 animate-fade-in-up">
+            <div class="col-lg-6 animate-fade-in-up stagger-2">
                 <div class="glass-card-static about-section">
-                    <h4>
-                        <i class="bi bi-collection-fill"></i>
-                        34 Food Categories
-                    </h4>
+                    <h4><i class="bi bi-bricks"></i> Application Architecture</h4>
+                    <ul>
+                        <li>Built with <strong>Object-Oriented Programming</strong> principles from the ground up</li>
+                        <li>6 modular utility classes:
+                            <span class="code-inline">ModelLoader</span>,
+                            <span class="code-inline">ImagePreprocessor</span>,
+                            <span class="code-inline">Predictor</span>,
+                            <span class="code-inline">MetricsReader</span>,
+                            <span class="code-inline">NutritionLoader</span>,
+                            <span class="code-inline">RedisCache</span>
+                        </li>
+                        <li>Flask Application Factory pattern for clean initialization</li>
+                        <li>Redis caching layer with SHA256-based image fingerprinting</li>
+                        <li>In-memory image processing — zero disk writes for privacy</li>
+                        <li>Deployed on <strong>Render</strong> with Gunicorn production server</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── TECH STACK ─────────────────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">06</span>
+            <h2><i class="bi bi-stack"></i> Technology Stack</h2>
+            <p>The complete toolchain powering FoodVision AI.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-1">
+                <div class="glass-card-static about-section">
+                    <h4><i class="bi bi-cpu"></i> AI & Machine Learning</h4>
                     <div class="tech-badges">
-                        <span class="tech-badge">Apple Pie</span>
-                        <span class="tech-badge">Baked Potato</span>
-                        <span class="tech-badge">Burger</span>
-                        <span class="tech-badge">Butter Naan</span>
-                        <span class="tech-badge">Chai</span>
-                        <span class="tech-badge">Chapati</span>
-                        <span class="tech-badge">Cheesecake</span>
-                        <span class="tech-badge">Chicken Curry</span>
-                        <span class="tech-badge">Chole Bhature</span>
-                        <span class="tech-badge">Crispy Chicken</span>
-                        <span class="tech-badge">Dal Makhani</span>
-                        <span class="tech-badge">Dhokla</span>
-                        <span class="tech-badge">Donut</span>
-                        <span class="tech-badge">Fried Rice</span>
-                        <span class="tech-badge">Fries</span>
-                        <span class="tech-badge">Hot Dog</span>
-                        <span class="tech-badge">Ice Cream</span>
-                        <span class="tech-badge">Idli</span>
-                        <span class="tech-badge">Jalebi</span>
-                        <span class="tech-badge">Kaathi Rolls</span>
-                        <span class="tech-badge">Kadai Paneer</span>
-                        <span class="tech-badge">Kulfi</span>
-                        <span class="tech-badge">Masala Dosa</span>
-                        <span class="tech-badge">Momos</span>
-                        <span class="tech-badge">Omelette</span>
-                        <span class="tech-badge">Paani Puri</span>
-                        <span class="tech-badge">Pakode</span>
-                        <span class="tech-badge">Pav Bhaji</span>
-                        <span class="tech-badge">Pizza</span>
-                        <span class="tech-badge">Samosa</span>
-                        <span class="tech-badge">Sandwich</span>
-                        <span class="tech-badge">Sushi</span>
-                        <span class="tech-badge">Taco</span>
-                        <span class="tech-badge">Taquito</span>
+                        <span class="tech-badge tech-badge-ai">Python 3.10+</span>
+                        <span class="tech-badge tech-badge-ai">TensorFlow 2.16</span>
+                        <span class="tech-badge tech-badge-ai">Keras</span>
+                        <span class="tech-badge tech-badge-ai">NumPy 1.26</span>
+                        <span class="tech-badge tech-badge-ai">Pillow 10.4</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-2">
+                <div class="glass-card-static about-section">
+                    <h4><i class="bi bi-server"></i> Backend</h4>
+                    <div class="tech-badges">
+                        <span class="tech-badge tech-badge-backend">Flask 3.1</span>
+                        <span class="tech-badge tech-badge-backend">Gunicorn</span>
+                        <span class="tech-badge tech-badge-backend">Redis 5.0</span>
+                        <span class="tech-badge tech-badge-backend">Jinja2</span>
+                        <span class="tech-badge tech-badge-backend">Werkzeug</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 animate-fade-in-up stagger-3">
+                <div class="glass-card-static about-section">
+                    <h4><i class="bi bi-window-desktop"></i> Frontend & DevOps</h4>
+                    <div class="tech-badges">
+                        <span class="tech-badge tech-badge-frontend">HTML5</span>
+                        <span class="tech-badge tech-badge-frontend">CSS3</span>
+                        <span class="tech-badge tech-badge-frontend">JavaScript ES6</span>
+                        <span class="tech-badge tech-badge-frontend">Bootstrap 5.3</span>
+                        <span class="tech-badge tech-badge-frontend">Render</span>
+                        <span class="tech-badge tech-badge-frontend">Git / GitHub</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- ── 34 FOOD CATEGORIES ─────────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">07</span>
+            <h2><i class="bi bi-collection-fill"></i> 34 Supported Food Categories</h2>
+            <p>A diverse mix of global and Indian cuisine trained with real-world images.</p>
+        </div>
+
+        <div class="animate-fade-in-up mb-5">
+            <div class="glass-card-static about-section">
+                <div class="food-category-grid">
+                    {% set food_items = [
+                    ('Apple Pie', 'bi-emoji-heart-eyes'),
+                    ('Baked Potato', 'bi-fire'),
+                    ('Burger', 'bi-fire'),
+                    ('Butter Naan', 'bi-fire'),
+                    ('Chai', 'bi-cup-hot'),
+                    ('Chapati', 'bi-circle'),
+                    ('Cheesecake', 'bi-emoji-heart-eyes'),
+                    ('Chicken Curry', 'bi-fire'),
+                    ('Chole Bhature', 'bi-fire'),
+                    ('Crispy Chicken', 'bi-fire'),
+                    ('Dal Makhani', 'bi-fire'),
+                    ('Dhokla', 'bi-circle'),
+                    ('Donut', 'bi-emoji-heart-eyes'),
+                    ('Fried Rice', 'bi-fire'),
+                    ('Fries', 'bi-fire'),
+                    ('Hot Dog', 'bi-fire'),
+                    ('Ice Cream', 'bi-snow2'),
+                    ('Idli', 'bi-circle'),
+                    ('Jalebi', 'bi-emoji-heart-eyes'),
+                    ('Kaathi Rolls', 'bi-fire'),
+                    ('Kadai Paneer', 'bi-fire'),
+                    ('Kulfi', 'bi-snow2'),
+                    ('Masala Dosa', 'bi-fire'),
+                    ('Momos', 'bi-fire'),
+                    ('Omelette', 'bi-egg-fried'),
+                    ('Paani Puri', 'bi-fire'),
+                    ('Pakode', 'bi-fire'),
+                    ('Pav Bhaji', 'bi-fire'),
+                    ('Pizza', 'bi-emoji-heart-eyes'),
+                    ('Samosa', 'bi-fire'),
+                    ('Sandwich', 'bi-fire'),
+                    ('Sushi', 'bi-emoji-heart-eyes'),
+                    ('Taco', 'bi-fire'),
+                    ('Taquito', 'bi-fire')
+                    ] %}
+                    {% for name, icon in food_items %}
+                    <div class="food-category-chip">
+                        <span class="food-chip-name">{{ name }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- ── KEY FEATURES ───────────────────────────────────────── -->
+        <div class="about-section-header animate-fade-in-up">
+            <span class="about-section-number">08</span>
+            <h2><i class="bi bi-stars"></i> Key Features & Highlights</h2>
+            <p>Everything that makes FoodVision AI a complete, production-ready system.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-12 animate-fade-in-up">
+                <div class="glass-card-static about-section">
+                    <div class="features-grid">
+                        <div class="feature-item-compact">
+                            <i class="bi bi-camera-fill"></i>
+                            <div>
+                                <strong>Drag & Drop Upload</strong>
+                                <span>Intuitive image upload with live preview and file validation</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-speedometer2"></i>
+                            <div>
+                                <strong>Real-time Inference</strong>
+                                <span>Models loaded lazily and cached for instant predictions</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-database-fill-gear"></i>
+                            <div>
+                                <strong>Graceful Redis Fallback</strong>
+                                <span>App works perfectly with or without Redis connection</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-moon-stars-fill"></i>
+                            <div>
+                                <strong>Dark / Light Mode</strong>
+                                <span>Saved in localStorage for persistent user preference</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-phone-fill"></i>
+                            <div>
+                                <strong>Fully Responsive</strong>
+                                <span>Built with Bootstrap 5 — works on mobile, tablet, desktop</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-cloud-download-fill"></i>
+                            <div>
+                                <strong>Auto Model Download</strong>
+                                <span>Models fetched from Google Drive on first request via gdown</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-shield-lock-fill"></i>
+                            <div>
+                                <strong>Zero Data Storage</strong>
+                                <span>All images processed in-memory — nothing saved to disk</span>
+                            </div>
+                        </div>
+                        <div class="feature-item-compact">
+                            <i class="bi bi-clipboard2-data-fill"></i>
+                            <div>
+                                <strong>Validation Reports</strong>
+                                <span>Detailed per-model accuracy, precision, recall, F1, TP/TN/FP/FN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ═══ CTA ═══ -->
+        <div class="text-center animate-fade-in-up mt-4 mb-3">
+            <a href="{{ url_for('home') }}" class="predict-btn"
+                style="display: inline-flex; width: auto; text-decoration: none; padding: 16px 48px;">
+                <i class="bi bi-lightning-charge-fill"></i> Try FoodVision AI Now
+            </a>
+        </div>
+
     </div>
 
     <!-- ═══ Footer ═══ -->
@@ -234,7 +610,8 @@
         <div class="container">
             <p>
                 <i class="bi bi-lightning-fill"></i>
-                Powered by <span class="footer-brand">Karthik Vana</span> | Data Engineer | AI Engineer
+                Powered by <a href="https://portfolio-v-smoky.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="footer-brand" style="text-decoration: none;">Karthik Vana</a> | Data Engineer | AI Engineer
             </p>
         </div>
     </footer>
